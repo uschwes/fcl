@@ -102,7 +102,7 @@ public:
   TriangleMotionBoundVisitor(const Vec3f& a_, const Vec3f& b_, const Vec3f& c_, const Vec3f& n_) :
     a(a_), b(b_), c(c_), n(n_) {}
 
-  virtual FCL_REAL visit(const MotionBase& motion) const { return 0; }
+  virtual FCL_REAL visit(const MotionBase& /*motion*/) const { return 0; }
   virtual FCL_REAL visit(const SplineMotion& motion) const;
   virtual FCL_REAL visit(const ScrewMotion& motion) const;
   virtual FCL_REAL visit(const InterpMotion& motion) const;
