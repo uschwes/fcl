@@ -42,7 +42,10 @@ set(FCL_HAVE_SSE 0)
 if(FCL_USE_SSE)
   if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID STREQUAL "Clang")
     set(FCL_HAVE_SSE 0) #always disable, for now
-    add_definitions(-march=native)
+    execute_process(COMMAND ${CMAKE_C_COMPILER} -dumpversion OUTPUT_VARIABLE GCC_VERSION)
+    if (GCC_VERSION VERSION_GREATER 4.7 OR GCC_VERSION VERSION_EQUAL 4.7)
+      add_definitions(-march=native)
+      endif()
   endif()
   # TODO: do something similar for other compilers
 endif()
